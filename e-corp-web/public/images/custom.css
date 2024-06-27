@@ -1,0 +1,1670 @@
+@import url("https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --red: #b8171f;
+  --gray: #1d1d1d;
+  --lightgray: #f5f5f5;
+  --beige: #fef4f0;
+  --blue: #0035ca;
+  --purple: #2b1664;
+  --yellow: #ffaa00;
+  --font-ecis: "Allerta Stencil", sans-serif;
+}
+body {
+  color: var(--gray);
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.filter-white {
+  -ms-filter: brightness(50);
+  filter: brightness(50);
+}
+
+.container-fluid {
+  padding: 0 8vw;
+}
+
+/*header*/
+.header {
+  width: 100%;
+  padding: 0 5vw;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  transition: all 300ms ease-in-out;
+}
+
+.header.fixed{
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.logo {
+  width: 70px;
+  position: relative;
+  min-height: 1px;
+  margin: 20px 0;
+  transition: all 300ms ease-in-out;
+}
+
+.header.fixed .logo{
+  width: 40px;
+  margin: 5px 0;
+}
+
+.headerBtns {
+  display: flex;
+}
+
+.headerBtns #menuBtn {
+  margin-right: 10px;
+}
+
+.viewmore .button {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.viewmore .button:hover {
+  color: var(--red);
+}
+
+.viewmore .button.text-white:hover {
+  text-decoration: underline;
+}
+
+.viewmore .button i {
+  transition: transform 300ms ease-in-out;
+}
+
+.viewmore .button:hover i {
+  transform: translateX(5px);
+}
+
+.menuBtn, .readmore a, .readmore button,
+.closemenu {
+  width: max-content;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: #fff;
+  padding: 10px 15px;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all 300ms ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.readmore{
+  display: flex;
+  margin-top: 3rem;
+}
+
+.readmore.center{
+  justify-content: center;
+}
+
+.readmore button{
+  border: none;
+  outline: none;
+}
+
+.menuBtn::before,.readmore a::before, .readmore button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 300ms ease-in-out;
+  z-index: -1;
+}
+
+.header.fixed .menuBtn::before{
+  background-color: var(--yellow);
+}
+
+.menuBtn:hover::before,.readmore a:hover::before, .readmore button:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.menuBtn:hover,.readmore a:hover, .readmore button:hover {
+  color: initial;
+}
+
+.readmore.dark a, .readmore.dark button{
+  color: #fff;
+}
+
+.readmore.dark a::before, .readmore.dark button::before{
+  background-color: var(--gray);
+}
+
+.menuBtn span {
+  font-weight: 900;
+}
+
+.menuBtn svg {
+  width: 17px;
+  height: 12px;
+  margin-left: 8px;
+}
+
+.menuBtn svg path {
+  fill: var(--gray);
+}
+
+/* .header.fixed {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.header.fixed .logo {
+  width: 120px;
+  margin: 0;
+} */
+
+.menuContainer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--gray);
+  color: #fff;
+  z-index: 9999;
+  display: none;
+}
+
+.closemenu {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding-right: 30px;
+  background-color: var(--red);
+  color: #fff;
+  z-index: 1;
+}
+
+.closemenu span {
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  font: 400 24px/1 "Allerta Stencil", sans-serif;
+}
+
+.menuContainer .inner-menu {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 5rem 5rem 3.5rem;
+}
+
+.menuContainer .inner-menu .top-menu {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+}
+
+.menuContainer .inner-menu nav > ul {
+  display: flex;
+}
+
+.menuContainer .inner-menu .top-menu > ul > li {
+  width: 25%;
+  padding: 0 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(calc(-20px * var(--i)));
+  transition: transform calc(150ms * var(--i)) ease-in-out,
+    opacity calc(500ms * var(--i)) ease-in-out;
+}
+
+.menuContainer.active .inner-menu .top-menu > ul > li {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.menuContainer .inner-menu .top-menu > ul > li section h4 {
+  font: 400 24px "Allerta Stencil", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.menuContainer .inner-menu .top-menu > ul > li section ul li {
+  display: table;
+}
+
+.menuContainer .inner-menu .top-menu > ul > li section ul li a {
+  display: block;
+  padding: 5px 0;
+  color: #aaaaaa;
+  transition: all 300ms ease-in-out;
+}
+
+.menuContainer .inner-menu .top-menu > ul > li section ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.menuContainer .inner-menu .bottom-menu ul {
+  justify-content: center;
+}
+
+.menuContainer .inner-menu .bottom-menu ul li {
+  margin: 0 15px;
+}
+
+.menuContainer .inner-menu .bottom-menu ul li a {
+  color: #aaa;
+  font: 400 2.2rem "Allerta Stencil", sans-serif;
+  transition: all 300ms ease-in-out;
+}
+
+.menuContainer .inner-menu .bottom-menu ul li a:hover {
+  color: #fff;
+}
+/*header*/
+
+/* Say hello */
+.helloContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -390px;
+  width: 390px;
+  background-color: var(--purple);
+  transition: right 300ms ease-in-out;
+  color: #fff;
+  z-index: 9999;
+  pointer-events: none;
+}
+.helloContainer.active {
+  right: 0;
+  pointer-events: auto;
+}
+
+.helloClose {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 300ms ease-in-out;
+}
+
+.helloClose:hover {
+  background-color: #3f2290;
+}
+
+.helloContainer .inner-hello {
+  height: 100%;
+  padding: 3.5rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.helloContainer .inner-hello h2 {
+  font: 400 2rem/1 "Allerta Stencil", sans-serif;
+  margin: 15px 0 4rem;
+}
+
+.field {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(112, 112, 112, 0.2);
+  padding-bottom: 10px;
+  color: #fff;
+  background: none;
+  font-weight: 700;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.field textarea {
+  height: 155px;
+  resize: none;
+  background-image: -webkit-linear-gradient(
+      left,
+      var(--purple) 0,
+      transparent 0
+    ),
+    -webkit-linear-gradient(right, var(--purple) 0, transparent 0),
+    -webkit-linear-gradient(var(--purple) 30px, rgba(112, 112, 112, 0.2) 30px, rgba(
+            112,
+            112,
+            112,
+            0.2
+          )
+          31px, var(--purple) 31px);
+  background-repeat: repeat-y;
+  background-size: 100% 100%, 100% 100%, 100% 31px;
+  background-attachment: local;
+}
+
+.field .send {
+  width: 100%;
+  padding: 6px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  outline: none;
+  border: none;
+  color: #000;
+  text-align: left;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: all 300ms ease-in-out;
+  margin-top: 23px;
+}
+
+.field .send:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-social {
+  align-items: flex-end;
+}
+.menu-social,
+.menu-social ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-social ul li {
+  margin-right: 15px;
+}
+
+.menu-social ul li:last-child {
+  margin-right: 0;
+}
+
+.menu-social ul li a {
+  display: block;
+  font-size: 20px;
+  color: #fff;
+}
+.menu-social .number p {
+  font-weight: 700;
+}
+.menu-social .number p,
+.menu-social .number p a {
+  color: rgba(255, 255, 255, 0.8);
+}
+.menu-social .number p a {
+  display: table;
+}
+.menu-social .number p a:hover {
+  text-decoration: underline;
+}
+/* Say hello */
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: #000;
+  z-index: 1;
+}
+
+.banner .homeVideo {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scrollDown {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 9;
+  animation: updown 1.2s linear infinite;
+}
+
+@keyframes updown {
+  0% {
+    transform: translate(-50%, -10px);
+  }
+  50% {
+    transform: translate(-50%, 0px);
+  }
+  100% {
+    transform: translate(-50%, -10px);
+  }
+}
+
+.scrollDown .circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.32);
+  border-radius: 50%;
+  transform: scale(1, 1);
+  transition: all 300ms ease-in-out;
+}
+
+.scrollDown:hover .circle {
+  transform: scale(1.2, 1.2);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.scrollDown i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  color: #fff;
+  font-size: 18px;
+  z-index: 2;
+}
+
+.padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.bg-lightgray {
+  background-color: var(--lightgray) !important;
+}
+.bg-red {
+  background-color: var(--red) !important;
+}
+.bg-gray {
+  background-color: var(--gray) !important;
+}
+
+.bg-blue{
+  background-color: var(--blue) !important;
+}
+
+.bg-purple{
+  background-color: var(--purple) !important;
+}
+
+.bg-image{
+  background: center / cover no-repeat fixed;
+  position: relative;
+  z-index: 1;
+}
+
+.bg-image::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+.bg-image.no-overlay::before{
+  display: none;
+}
+
+.text-red {
+  color: var(--red) !important;
+}
+.text-yellow {
+  color: var(--yellow) !important;
+}
+.text-ecis{
+  font-family: var(--font-ecis);
+}
+
+.heading {
+  display: table;
+  margin-bottom: 40px;
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.heading h2 {
+  font: 400 3rem "Allerta Stencil", sans-serif;
+  margin-bottom: 0;
+}
+
+.heading h3 {
+  font: 400 2rem "Allerta Stencil", sans-serif;
+  margin-bottom: 0;
+}
+
+.heading svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.overview-text-container {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.overview-text-container > h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* .readmore {
+  width: 100%;
+  display: flex;
+  margin-top: 3rem;
+}
+
+.readmore.center {
+  justify-content: center;
+}
+
+.readmore a {
+  width: max-content;
+  display: block;
+  color: var(--red);
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+}
+
+.readmore a span {
+  width: 100%;
+  padding: 8px 20px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.readmore a::before,
+.readmore a::after,
+.readmore a span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  border: 1px solid var(--gray);
+  transition: all 300ms ease-in-out;
+}
+.readmore a::before,
+.readmore a::after {
+  width: 10px;
+}
+.readmore a::before {
+  left: 5px;
+  border-right-width: 0;
+}
+.readmore a::after {
+  right: 5px;
+  border-left-width: 0;
+}
+.readmore a span::before {
+  width: 100%;
+  left: 0;
+  border-width: 1px 0;
+  transform: scaleX(0);
+}
+.readmore a:hover::before {
+  left: 0;
+}
+.readmore a:hover::after {
+  right: 0;
+}
+.readmore a:hover span::before {
+  transform: scaleX(1);
+} */
+
+/* hm services */
+.hm-services-wrapper {
+  background-image: linear-gradient(
+    to top,
+    #f3e7e9 0%,
+    #e3eeff 99%,
+    #e3eeff 100%
+  );
+}
+
+.heading-container {
+  margin-bottom: 3.5rem;
+}
+
+.short-border {
+  width: 100px;
+  height: 3px;
+  background-color: var(--red);
+  border-radius: 10px;
+  display: table;
+  margin: 2rem auto 0;
+}
+
+.heading-container h6 {
+  font-weight: 700;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.hm-services-container {
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.hm-services-container:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.hm-services-inner {
+  position: relative;
+  height: 100%;
+}
+
+.hm-services-inner img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.hm-services-inner img.services-bg {
+  position: relative;
+}
+
+.hm-services-inner .girl-on-mic {
+  z-index: 3;
+}
+
+.hm-services-inner .digital-social {
+  z-index: 4;
+}
+
+.hm-services-text section {
+  width: 70%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.hm-services-container .row.flex-row-reverse .hm-services-text section {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.hm-services-text section .heading {
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+.hm-services-text section h6 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+}
+/* hm services */
+
+/* hm clientele */
+.hm-clientele-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.clients-filter {
+  padding-left: 8vw;
+  max-width: 30%;
+  flex: 0 0 30%;
+  background-color: var(--red);
+}
+
+.clients-filter ul li button {
+  width: 80%;
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  background: none;
+  color: rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+.clients-filter ul li button::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  right: 0;
+  top: 0;
+  bottom: -1px;
+  background: #fff;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  opacity: 0;
+}
+
+.clients-filter ul li button.active {
+  width: 100%;
+  font: 400 28px "Allerta Stencil", sans-serif;
+  background: #fff;
+  color: var(--red);
+}
+
+.clients-filter ul li button.active::before {
+  opacity: 1;
+}
+
+.hm-clientele-filter-bigbox:not(.show){
+  display: none;
+}
+
+.hm-clientele-filter-bigbox .scroller{
+  overflow: auto;
+  height: 680px;
+  padding-right: 25px;
+}
+
+.scroller::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+.scroller::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #cfcfcf;
+  border-radius: 10px;
+}
+
+/* Handle */
+.scroller::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scroller::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+.hm-clientele-container {
+  max-width: 70%;
+  flex: 0 0 70%;
+  padding-right: 8vw;
+  padding-left: 4vw;
+  padding-top: calc(5rem - 40px);
+  padding-bottom: 5rem;
+}
+
+.hm-clients-box {
+  -webkit-perspective: 700px;
+  perspective: 700px;
+  height: 140px;
+  z-index: 999;
+}
+.hm-clients-box:hover section {
+  -webkit-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+}
+.hm-clients-box section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-transform-origin: 90px 90px -90px;
+  transform-origin: 90px 90px -90px;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+.front {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  z-index: 2;
+  /* border: 1px solid #ccc; */
+  background: #fff;
+}
+.side {
+  background: var(--gray);
+  -webkit-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+  z-index: 1;
+  left: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.face img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  max-width: 60%;
+  max-height: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.side article h5 {
+  text-transform: uppercase;
+  font: 400 22px "Allerta Stencil", sans-serif;
+}
+
+.side article p {
+  margin-bottom: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* hm clientele */
+
+/* Accelerate Business */
+.accelerate-business-container{
+  background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shape{
+  position: absolute;
+  left: 70%;
+  top: 0;
+  border-radius: 7rem;
+  width: 90rem;
+  height: 110rem;
+  transform: skew(35deg,-20deg);
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  z-index: -1;
+}
+
+.marketingBox{
+  margin: 15px 0;
+}
+
+.marketingBox .marketingBox-inner{
+  height: 100%;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.marketingBox .marketingBox-inner .marketing-card{
+  padding: 20px;
+  height: 100%;
+}
+
+.marketingBox .marketingBox-inner .marketing-card .img-fluid img{
+  max-width: 50px;
+  max-height: 50px;
+  margin: 0 auto 25px;
+  width: auto;
+  filter: hue-rotate(180deg);
+}
+
+.marketingBox .marketingBox-inner .marketing-card h5{
+  font-weight: 800;
+  font-size: 22px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.marketingBox .marketingBox-inner .marketing-card p{
+  font-weight: 500;
+}
+
+.marketingBox .marketingBox-inner .marketing-card h6{
+  font-weight: 800;
+  display: block;
+  margin-top: 40px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.marketingBox .marketingBox-inner .marketing-card.card-back{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 100%;
+  /* background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%); */
+  background-color: var(--red);
+  color: #fff;
+  transition: all 300ms ease-in-out;
+}
+
+.marketingBox .marketingBox-inner:hover .marketing-card.card-back{
+  top: 0;
+}
+
+.marketingBox .marketingBox-inner .marketing-card.card-back h3{
+  font: 400 2rem "Allerta Stencil", sans-serif;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.marketingBox.view-all-marketing .marketingBox-inner{
+  background-image: radial-gradient(circle 248px at center, #ef1520 0%, #d8262f 47%, #b8171f 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.marketingBox.view-all-marketing .marketingBox-inner a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.marketingBox.view-all-marketing .marketingBox-inner a i{
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  border: 2px solid;
+  font-size: 22px;
+  text-align: center;
+  opacity: 0.5;
+  margin-bottom: 25px;
+  transition: all 300ms ease-in-out;
+}
+.marketingBox.view-all-marketing .marketingBox-inner a:hover i{
+  opacity: 1;
+}
+
+.marketingBox.view-all-marketing .marketingBox-inner a p{
+  margin-bottom: 0;
+  font-weight: 700;
+}
+/* Accelerate Business */
+
+.us-the-best{
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.us-the-best .bg-overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: bottom center /contain no-repeat url(../images/section-bg-1.png) fixed;
+  opacity: .1;
+  mix-blend-mode: screen;
+}
+
+.best-text article{
+  padding-right: 5rem;
+}
+
+.best-text article p{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.best-stats section .stats-line{
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  transform: translateX(calc(12px * var(--i)));
+}
+
+.best-stats section .stats-line h2{
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+
+.best-stats section .stats-line .counter{
+  font-size: 5rem;
+  font-weight: 200;
+}
+
+.best-stats section .stats-line h6{
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.booknow{
+  margin-top: 30px;
+}
+
+.booknow a, .booknow button{
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 40px;
+  background-color: var(--red);
+  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 300ms ease-in-out;
+}
+.booknow a:hover, .booknow button:hover{
+  background-image: linear-gradient(to left, #ff0844 0%, #ffb199 100%);
+}
+
+.booknow button{
+  border: none;
+}
+
+.booknow.light a{
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  color: var(--gray);
+}
+
+.booknow.light a:hover{
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  color: #fff;
+}
+
+/* Get In Touch */
+.getInTouchForm label{
+  font-weight: 700;
+}
+.getInTouchForm p{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.getInTouchForm .form-check{
+  margin-right: 0;
+  margin-bottom: 15px;
+}
+.getInTouchForm .field input, .getInTouchForm .field textarea{
+  color: var(--gray);
+}
+.getInTouchForm .field input::placeholder, .getInTouchForm .field textarea::placeholder{
+  color: var(--gray);
+}
+.getInTouchForm .field textarea{
+  background: none;
+  height: 35px;
+}
+.getInTouchForm .field input:focus, .getInTouchForm .field textarea:focus{
+  border-bottom-color: var(--gray);
+}
+
+.sub-fields{
+  display: none;
+}
+/* Get In Touch */
+
+.gap-row{
+  row-gap: 30px;
+}
+/*Footer*/
+.footer-area {
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.midfooter{
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footmails i{
+  margin: 0 auto 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--gray);
+  color: #fff;
+}
+
+.footmails a{
+  font-family: var(--font-ecis);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--red);
+}
+.footmails a:hover{
+  color: var(--gray);
+}
+
+.bottomfooter{
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.footlinks ul{
+  gap: 10px;
+}
+
+.footlinks ul a{
+  color: var(--gray);
+}
+
+.footlinks ul a:hover{
+  color: var(--red);
+}
+
+.button-top {
+  background: rgba(0, 0, 0, 0.32);
+  position: fixed;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -40px;
+  color: #ffffff;
+  font-size: 13px;
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  pointer-events: none;
+  transition: all 500ms ease;
+  z-index: 99;
+}
+
+.button-top.fixed {
+  bottom: 5px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.button-top:hover {
+  background: #000;
+}
+/*Footer*/
+
+/****** inside pages start ******/
+.breadcrumb-container{
+  padding-top: 120px;
+}
+
+.breadcrumb-container .pageHeading{
+  padding: 5px 5vw;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+}
+
+.breadcrumb{
+  background-color: transparent;
+  margin-bottom: 0;
+  border-radius: 0;
+  padding: 0;
+}
+.breadcrumb li{
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.breadcrumb-item+.breadcrumb-item::before,
+.breadcrumb a{
+  color: #fff;
+}
+.breadcrumb a:hover{
+  color: var(--red);
+}
+.breadcrumb-item+.breadcrumb-item::before{
+  font-weight: 400;
+}
+.breadcrumb-item.active{
+  color: var(--yellow);
+}
+
+/* contact */
+.contactBox .col-2 > i{
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--red);
+}
+
+.contactBox h4{
+  font-family: var(--font-ecis);
+  color: var(--purple);
+}
+
+.contactBox p{
+  font-weight: 700;
+  color: #aaaaaa;
+}
+/* contact */
+
+/* testimonials */
+.testimonialBox .inner{
+  background: var(--purple);
+  background: linear-gradient(30deg, #170752 50%,var(--purple) 50%);
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  transition: all 300ms ease-in-out;
+}
+.testimonialBox .inner:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+}
+
+.testimonialBox .inner::before,
+.testimonialBox .inner::after{
+  position: absolute;
+  font-size: 10rem;
+  color: rgb(255 255 255 / 10%);
+}
+.testimonialBox .inner::before{
+  content: "\275D";
+  top: 0;
+  left: 10px;
+  line-height: 1;
+}
+.testimonialBox .inner::after{
+  content: "\275E";
+  bottom: 0;
+  right: 10px;
+  line-height: 0;
+}
+
+.testimonialText p{
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.testimonialBox .testimName{
+  margin-top: 10px;
+}
+
+.testimonialBox .testimName h6{
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.testimName .verticle-line{
+  margin: 0 auto 10px;
+  display: table;
+  height: 40px;
+  border-right: 1px solid rgb(255 255 255 / 30%);
+}
+/* testimonials */
+
+/* Careers */
+.careerText{
+  padding: 2rem;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+/* Careers */
+/****** inside pages end ******/
+
+/*transformation Animation*/
+.leftTranslate {
+  -webkit-transform: translate(-200px, 0);
+  transform: translate(-200px, 0);
+  opacity: 0;
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+}
+
+.rightTranslate {
+  -webkit-transform: translate(200px, 0);
+  transform: translate(200px, 0);
+  opacity: 0;
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+}
+
+.topTranslate {
+  -webkit-transform: translate(0, -200px);
+  transform: translate(0, -200px);
+  opacity: 0;
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+}
+
+.bottomTranslate {
+  -webkit-transform: translate(0, 200px);
+  transform: translate(0, 200px);
+  opacity: 0;
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+}
+
+.doneTranslate {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.doneBeat {
+  animation: beating 1.5s linear infinite;
+}
+@keyframes beating {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/*transformation Animation*/
+
+/*responsive*/
+@media (min-width: 1400px){
+  .hm-clients-box section {
+    width: 83%;
+    margin: 0 auto;
+  }
+}
+@media (min-height: 1366px) {
+  .banner{height: 50vh;}
+  .hm-clientele-wrapper{min-height: auto;}
+}
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1024px) {
+  .heading{padding: 20px 0;}
+  .heading h2{font-size: 2.3rem;}
+  .overview-text-container > h3, .hm-services-text section h6{font-size: 16px;}
+  .side article h5{font-size: 17px;}
+  .marketingBox .marketingBox-inner .marketing-card{padding: 10px;}
+  .marketingBox .marketingBox-inner .marketing-card h5{font-size: 18px; padding-bottom: 20px; margin-bottom: 20px;}
+  .marketingBox .marketingBox-inner .marketing-card h6{margin-top: 20px;}
+}
+
+@media (max-height: 425px) {
+}
+
+@media (max-width: 991px) {
+  .careerText h4{
+    font-size: 1.25rem;
+  }
+  .footmails a{
+    font-size: 14px;
+  }
+  .footmails i{
+    font-size: 13px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo{width: 60px;}
+  .menuContainer .inner-menu{padding: 5rem 20px 3rem;}
+  .menuContainer .inner-menu nav > ul{flex-wrap: wrap;}
+  .menuContainer .inner-menu .top-menu > ul > li{width: 50%; padding: 20px 10px;}
+  .menuContainer .inner-menu .top-menu > ul > li section h4{margin-bottom: 10px;}
+  .menuContainer .inner-menu .bottom-menu ul li a{font-size: 22px;}
+  .heading{margin-bottom: 20px;}
+  .heading h2{font-size: 1.8rem;}
+  .heading-container h6{width: 90%;}
+  .overview-text-container > h3, .hm-services-text section h6, .heading-container h6{font-size: 14px;}
+  .hm-services-text section .heading{padding: 0;}
+  .clients-filter ul li button{font-size: 14px; height: 50px;}
+  .clients-filter ul li button.active{font-size: 20px;}
+  .clients-filter ul li button::before{left: -15px;}
+  .hm-clients-box{height: 100px;}
+  .side article h5{font-size: 14px;}
+  .side article p{font-size: 10px;}
+  .marketingBox .marketingBox-inner .marketing-card .img-fluid img{margin-bottom: 15px;}
+  .marketingBox .marketingBox-inner .marketing-card.card-back h3{font-size: 22px; margin-bottom: 15px; padding-bottom: 10px;}
+  .marketingBox.view-all-marketing .marketingBox-inner a i{width: 70px; height: 70px; line-height: 70px;}
+  .best-text article{padding-right: 1rem;}
+  .best-text article p, .best-stats section .stats-line h6{font-size: 14px;}
+  .best-stats section .stats-line .counter{font-size: 4rem;}
+  .breadcrumb-container {padding-top: 100px;}
+}
+
+@media (max-width: 720px) {
+  .bottom-menu{margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);}
+  .helloContainer .inner-hello{overflow: auto;}
+  .padding{padding-top: 3rem; padding-bottom: 3rem;}
+  .hm-services-container{padding-bottom: 3rem; margin-bottom: 2rem;}
+  .hm-services-inner{width: 70%; margin: 0 auto;}
+  .hm-services-text section{width: 100%; text-align: center; margin-top: 20px;}
+  .hm-services-text section .heading{margin-left: auto; margin-right: auto;}
+  .heading-container{margin-bottom: 2rem;}
+  .clients-filter{padding-left: 5%;}
+  .hm-clientele-container{padding-right: 5%;}
+  .clients-filter ul li button{font-size: 12px; height: 40px;}
+  .clients-filter ul li button.active{font-size: 15px;}
+  .marketingBox.view-all-marketing .marketingBox-inner{padding: 20px;}
+  .best-text .heading{margin-left: auto; margin-right: auto; text-align: center;}
+  .best-text article{padding-right: 0; text-align: center;}
+  .best-stats{margin-top: 50px;}
+  .best-stats section{display: flex; justify-content: center; text-align: center;}
+  .best-stats section .stats-line{flex-direction: column; transform: none; align-items: center; padding: 0 10px; text-transform: capitalize;}
+  .best-stats section .stats-line h2{margin-right: 0;}
+  .getInTouchForm label{font-size: 13px;}
+  .careerText h4,.contactBox h4{font-size: 1rem;}
+}
+
+@media (max-width: 667px) {
+}
+
+@media (max-width: 575px) {
+  .logo{width: 40px; margin: 10px 0;}
+  .menuBtn, .closemenu{font-size: 10px; padding: 7px 15px;}
+  .closemenu{padding-right: 30px;}
+  .closemenu span{font-size: 18px;}
+  .menuContainer .inner-menu .top-menu > ul > li section h4{font-size: 18px;}
+  .helloClose{width: 60px; height: 60px;}
+  .banner{height: 400px;}
+  .bannerControl{display: none;}
+  .hm-clients-box{width: 50%;}
+  .hm-clients-box:nth-child(9){display: none;}
+  .careerText h4, .contactBox h4{font-size: 14px;}
+  .contactBox{width: 50%;}
+  .contactBox .col-2 > i{font-size: 1rem;}
+  .testimonialText p{font-size: 1rem;}
+  .button-top{right: 10px; left: auto; transform: none;}
+  .breadcrumb-container {padding-top: 60px;}
+  .pageTitle h2{font-size: 1.25rem;}
+}
+
+@media (max-width: 512px) {
+  .overview-text-container{width: 100%;}
+  .heading h2{font-size: 24px;}
+  .overview-text-container > h3, .hm-services-text section h6, .heading-container h6, .best-text article p, .best-stats section .stats-line h6{font-size: 13px; font-weight: 500;}
+  .best-stats section .stats-line .counter{font-size: 2.5rem;}
+
+}
+
+@media (max-width: 425px) {
+  body{font-size: 12px;}
+  .menuContainer .inner-menu{padding-left: 10px; padding-right: 10px;}
+  .menuContainer .inner-menu .top-menu > ul > li{width: 100%;}
+  .menuContainer .inner-menu .top-menu > ul > li section h4{font-size: 16px;}
+  .menuContainer .inner-menu .top-menu > ul > li section ul{display: flex; flex-wrap: wrap;}
+  .menuContainer .inner-menu .top-menu > ul > li section ul li{width: 50%; padding-right: 10px;}
+  .menuContainer .inner-menu .bottom-menu ul li{margin: 0 10px;}
+  .menuContainer .inner-menu .bottom-menu ul li a{font-size: 18px;}
+  .helloContainer{width: 90%; right: -90%;}
+  .scrollDown{width: 30px; height: 30px;}
+  .scrollDown i{font-size: 11px;}
+  .heading{padding-top: 0;}
+  .readmore{margin-top: 2rem;}
+  .readmore a{padding: 5px 15px;}
+  .short-border{height: 2px; margin-top: 20px;}
+  .hm-services-inner{width: 90%;}
+  .heading h2{font-size: 22px;}
+  .heading-container{margin-bottom: 20px;}
+  .overview-text-container > h3, .hm-services-text section h6, .heading-container h6, .best-text article p, .best-stats section .stats-line h6{font-size: 12px;}
+  .hm-clientele-wrapper{min-height: 1px;}
+  .hm-clientele-container{padding-bottom: 15px;}
+  .hm-clients-box{height: 80px;}
+  .face img{max-width: 80%; max-height: 80%;}
+  .side article{padding: 0 10px;}
+  .contactBox{width: 100%;}
+  .testimonialBox .inner::before, .testimonialBox .inner::after{font-size: 7rem;}
+}
+
+@media (max-width: 375px) {
+  .closemenu{top: 10px;}
+  .menuContainer .inner-menu{padding: 3rem 10px;}
+  .menuContainer .inner-menu .top-menu > ul > li:first-child{padding-top: 0;}
+  .menuContainer .inner-menu .bottom-menu ul li a{font-size: 16px;}
+  .helloContainer .inner-hello h2{font-size: 26px; margin-bottom: 2rem;}
+  .helloContainer .inner-hello h2 br{display: none;}
+  .container-fluid{padding: 0 5%;}
+  .clients-filter ul li button{color: rgba(255, 255, 255, 0.75); word-break: break-all;}
+  .marketingBox .marketingBox-inner .marketing-card{padding: 15px;}
+  .marketingBox .marketingBox-inner .marketing-card .img-fluid img{max-width: 40px; max-height: 40px;}
+  .marketingBox .marketingBox-inner .marketing-card h5{font-size: 16px;}
+  .marketingBox .marketingBox-inner .marketing-card h6{font-size: 11px;}
+  .booknow a, .booknow button{padding: 7px 20px 5px; font-size: 11px;}
+  .marketingBox.view-all-marketing .marketingBox-inner a i{width: 50px; height: 50px; line-height: 50px; font-size: 16px;}
+  .best-stats section .stats-line{padding: 5px;}
+  .best-stats section .stats-line .counter{font-size: 2rem;}
+  .best-stats section .stats-line h6{letter-spacing: normal;}
+  .getInTouchForm p,.testimonialText p{font-size: 14px;}  
+  .getInTouchForm .field textarea{height: 50px;}
+  .careerText{padding: 1rem;}
+}
+
+@media (max-width: 360px) {
+  .menuContainer .inner-menu .top-menu > ul > li section h4{font-size: 14px; margin-bottom: 5px;}
+  .menuContainer .inner-menu .top-menu > ul > li section ul li a{font-size: 10px; padding: 2px 0;}
+  .helloContainer .inner-hello{padding: 3rem 20px 20px;}
+  .clients-filter ul li button{height: 32px; font-size: 10px; font-weight: 600;}
+  .clients-filter ul li button.active{font-size: 13px;}
+  .heading{padding-bottom: 10px;}
+  .side article h5{font-size: 12px;}
+  .side article p{font-size: 8px;}
+  .getInTouchForm p,.testimonialText p{font-size: 13px;}
+}
+
+@media (max-width: 320px) {
+  .menuContainer .inner-menu .bottom-menu ul li a{font-size: 14px;}
+  .field textarea{height: 124px;}
+  .breadcrumb li{font-size: 9px; line-height: 1;}
+}
+
+@media (max-width: 280px) {
+  body{font-size: 10px;}
+  .clients-filter{padding-left: 10px;}
+  .clients-filter ul li button{width: 100%;}
+  .clients-filter ul li button.active{font-size: 12px;}
+  .clients-filter ul li button::before{left: -10px;}
+  .hm-clientele-filter-bigbox .row{margin-left: -5px; margin-right: -5px;}
+  .hm-clients-box{padding: 0 5px;}
+  .heading h2{font-size: 17px; letter-spacing: -1px;}
+  .marketingBox .marketingBox-inner .marketing-card h5{font-size: 14px; margin-bottom: 10px; padding-bottom: 10px;}
+  .best-stats section{flex-direction: column;}
+  .best-stats section .stats-line{flex-direction: row; align-items: flex-end;}
+  .best-stats section .stats-line h2{margin-right: 10px;}
+  .getInTouchForm p{font-size: 13px;}
+  .getInTouchForm label{font-size: 10px;}
+}

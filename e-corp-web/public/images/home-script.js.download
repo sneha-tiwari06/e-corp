@@ -1,0 +1,116 @@
+
+$(document).ready(function() {
+	"use strict";
+	
+	$(".scrollDown").click(function() {
+		$('html,body').animate({
+			scrollTop: $(".scrollto").offset().top},
+		'slow');
+	});
+
+	$(".client-filter-btn").click(function(){
+		$(".client-filter-btn.active").removeClass("active");
+		$(this).addClass("active");
+
+		$(".hm-clientele-filter-bigbox").hide();
+		$("#hm-clientele-filter-bigbox-"+$(this).data("target")).fadeIn(300);
+	});
+	
+	
+	// $(".testimSlider").slick({
+	// 	arrows: true,
+	// 	slidesToShow: 3,
+	// 	slidesToScroll: 1,
+	// 	infinite: true,
+	// 	autoplay: false,
+	// 	cssEase:'linear',
+	// 	responsive: [
+	// 		{
+	// 		  breakpoint: 1024,
+	// 		  settings: {
+	// 			slidesToShow: 3,
+	// 			slidesToScroll: 1,
+	// 			cssEase:'linear',
+	// 		  }
+	// 		},
+	// 		{
+	// 		  breakpoint: 600,
+	// 		  settings: {
+	// 			slidesToShow: 2,
+	// 			slidesToScroll: 1,
+	// 			cssEase:'linear',
+	// 		  }
+	// 		},
+	// 		{
+	// 		  breakpoint: 426,
+	// 		  settings: {
+	// 			slidesToShow: 1,
+	// 			slidesToScroll: 1,
+	// 			cssEase:'linear',
+	// 		  }
+	// 		}
+	// 		// You can unslick at a given breakpoint now by adding:
+	// 		// settings: "unslick"
+	// 		// instead of a settings object
+	// 	]
+	// });
+});
+
+$(window).scroll(function(){
+	"use strict";
+	var wScroll = $(window).scrollTop();
+
+	// if(wScroll > $('.videoContainer').offset().top - ($(window).height() / 2)) {
+	// 	$("#homeVideo")[0].play();
+	// } else{
+	// 	$("#homeVideo")[0].pause();
+	// }
+	
+	/*if(wScroll > $('.animate-section1').offset().top - ($(window).height() / 1.5)) {
+		$('.animate-section1 .animate').each(function(i){
+			setTimeout(function(){
+				$('.animate-section1 .animate').eq(i).addClass('doneTranslate');
+			}, 150 * (i+1));
+		});
+	}*/
+	if(wScroll > $('#digi-mark-container').offset().top - ($(window).height() / 1.5)) {
+		$('#digi-mark-container .animate').each(function(i){
+			setTimeout(function(){
+				$('#digi-mark-container .animate').eq(i).addClass('doneTranslate');
+			}, 150 * (i+1));
+		});
+		setTimeout(function(){
+			$(".doBeat").addClass('doneBeat');
+		}, 1500);
+	}
+	if(wScroll > $('#design-development-container').offset().top - ($(window).height() / 1.5)) {
+		$('#design-development-container .animate').each(function(i){
+			setTimeout(function(){
+				$('#design-development-container .animate').eq(i).addClass('doneTranslate');
+			}, 150 * (i+1));
+		});
+		setTimeout(function(){
+			$(".doBeat").addClass('doneBeat');
+		}, 1500);
+	}
+	if(wScroll > $('#app-development-container').offset().top - ($(window).height() / 1.5)) {
+		$('#app-development-container .animate').each(function(i){
+			setTimeout(function(){
+				$('#app-development-container .animate').eq(i).addClass('doneTranslate');
+			}, 150 * (i+1));
+		});
+		setTimeout(function(){
+			$(".doBeat").addClass('doneBeat');
+		}, 1500);
+	}
+	if(wScroll > $('#branding-container').offset().top - ($(window).height() / 1.5)) {
+		$('#branding-container .animate').each(function(i){
+			setTimeout(function(){
+				$('#branding-container .animate').eq(i).addClass('doneTranslate');
+			}, 150 * (i+1));
+		});
+		setTimeout(function(){
+			$(".doBeat").addClass('doneBeat');
+		}, 1500);
+	}
+});
